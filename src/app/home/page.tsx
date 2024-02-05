@@ -4,7 +4,7 @@ import SearchDestination from './_components/searchDestination';
 import { Button, Stack, colors } from '@mui/material';
 import './style.css';
 
-import DatePickerRange from './_components/dateRangePicker';
+import DatePickerRange from './_components/datePickerRange';
 import PersonAndRoomPicker from './_components/personAndRoomPicker';
 
 export default function Home() {

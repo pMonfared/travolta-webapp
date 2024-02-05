@@ -7,8 +7,8 @@ import 'react-datepicker/dist/react-datepicker.css';
 
 export default function DatePickerRange() {
   const datePickerRef: any = useRef(null);
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(null);
+  const [startDate, setStartDate] = useState<Date>(new Date());
+  const [endDate, setEndDate] = useState<Date | null>(null);
   const onChange = (dates: object) => {
     const [start, end]: any = dates;
     setStartDate(start);
