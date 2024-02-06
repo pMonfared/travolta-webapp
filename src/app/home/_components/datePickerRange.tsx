@@ -1,11 +1,21 @@
 import { useRef, useState } from 'react';
 import DatePicker from 'react-datepicker';
 import dayjs from 'dayjs';
-import { IconButton, InputBase, Paper, Stack } from '@mui/material';
+import { IconButton, InputBase, Paper, Stack, colors } from '@mui/material';
 import CalendarTodayOutlinedIcon from '@mui/icons-material/CalendarTodayOutlined';
 import 'react-datepicker/dist/react-datepicker.css';
 
-export default function DatePickerRange() {
+interface IDatePickerRangeProps {
+  onSelectDateRange: (startDate: Date, endDate: Date | null) => void;
+  requiredStartDate: boolean;
+  requiredEndDate: boolean;
+}
+
+export default function DatePickerRange({
+  onSelectDateRange,
+  requiredStartDate,
+  requiredEndDate,
+}: IDatePickerRangeProps) {
   const datePickerRef: any = useRef(null);
   const [startDate, setStartDate] = useState<Date>(new Date());
   const [endDate, setEndDate] = useState<Date | null>(null);
@@ -13,6 +23,9 @@ export default function DatePickerRange() {
     const [start, end]: any = dates;
     setStartDate(start);
     setEndDate(end);
+    if (start && end) {
+      onSelectDateRange(start, end);
+    }
   };
   return (
     <>
@@ -21,16 +34,19 @@ export default function DatePickerRange() {
         justifyContent="space-between"
         alignItems="center"
         spacing={2}
-        style={{ paddingInline: 10 }}
+        style={{
+          paddingInline: 10,
+        }}
         onClick={() => datePickerRef?.current?.setOpen(true)}
       >
         <Paper
-          component="form"
           sx={{
             p: '2px 4px',
             display: 'flex',
             alignItems: 'center',
             width: 110,
+            border: requiredStartDate === true ? 2 : 0,
+            borderColor: colors.red[900],
           }}
         >
           <IconButton sx={{ p: '10px' }} aria-label="menu">
@@ -44,12 +60,13 @@ export default function DatePickerRange() {
           />
         </Paper>
         <Paper
-          component="form"
           sx={{
             p: '2px 4px',
             display: 'flex',
             alignItems: 'center',
             width: 110,
+            border: requiredEndDate === true ? 2 : 0,
+            borderColor: colors.red[900],
           }}
         >
           <IconButton sx={{ p: '10px' }} aria-label="menu">
