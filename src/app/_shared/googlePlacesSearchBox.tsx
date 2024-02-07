@@ -1,4 +1,3 @@
-import { Libraries, useGoogleMapsScript } from 'use-google-maps-script';
 import usePlacesAutocomplete, {
   getGeocode,
   getLatLng,
@@ -14,9 +13,9 @@ import {
 
 import '@reach/combobox/styles.css';
 import { ChangeEvent } from 'react';
-import { InputBase } from '@mui/material';
+import { Libraries, useLoadScript } from '@react-google-maps/api';
 
-interface ISearchBoxProps {
+interface IGooglePlacesSearchBoxProps {
   onSelectAddress: (
     address: string,
     latitude: number | null,
@@ -27,13 +26,16 @@ interface ISearchBoxProps {
 
 const libraries: Libraries = ['places'];
 
-export function SearchBox({ onSelectAddress, defaultValue }: ISearchBoxProps) {
-  const { isLoaded, loadError } = useGoogleMapsScript({
-    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_API_KEY ?? '',
-    libraries,
+export function GooglePlacesSearchBox({
+  onSelectAddress,
+  defaultValue,
+}: IGooglePlacesSearchBoxProps) {
+  const { isLoaded, loadError } = useLoadScript({
+    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_API_KEY as string,
+    libraries: libraries as any,
   });
 
-  if (!isLoaded) return null;
+  if (!isLoaded) return <div className="w-full p-2"></div>;
   if (loadError)
     return (
       <div>
@@ -49,7 +51,10 @@ export function SearchBox({ onSelectAddress, defaultValue }: ISearchBoxProps) {
   );
 }
 
-function ReadySearchBox({ onSelectAddress, defaultValue }: ISearchBoxProps) {
+function ReadySearchBox({
+  onSelectAddress,
+  defaultValue,
+}: IGooglePlacesSearchBoxProps) {
   const {
     ready,
     value,
@@ -90,17 +95,9 @@ function ReadySearchBox({ onSelectAddress, defaultValue }: ISearchBoxProps) {
         className="w-full p-2"
         autoComplete="none"
         type="search"
+        style={{ border: 0 }}
       />
 
-      {/* <InputBase
-        id="search"
-        value={value}
-        onChange={handleChange}
-        disabled={!ready}
-        sx={{ ml: 1, flex: 1 }}
-        placeholder="What is your destinations?"
-        inputProps={{ 'aria-label': 'search google maps' }}
-      /> */}
       <ComboboxPopover>
         <ComboboxList>
           {status === 'OK' &&

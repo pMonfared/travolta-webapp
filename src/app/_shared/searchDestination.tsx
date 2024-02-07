@@ -1,10 +1,9 @@
 import Paper from '@mui/material/Paper';
-import InputBase from '@mui/material/InputBase';
 import IconButton from '@mui/material/IconButton';
 import MapOutlinedIcon from '@mui/icons-material/MapOutlined';
 import SearchIcon from '@mui/icons-material/Search';
-import { SearchBox } from './searchBox';
-import { Box, Card, colors } from '@mui/material';
+import { GooglePlacesSearchBox } from './googlePlacesSearchBox';
+import { colors } from '@mui/material';
 
 interface ISearchDestinationProps {
   onSelectDestination: (
@@ -41,7 +40,7 @@ export default function SearchDestination({
           inputProps={{ 'aria-label': 'search google maps' }}
         /> */}
 
-      <SearchBox
+      <GooglePlacesSearchBox
         onSelectAddress={onSelectDestination}
         defaultValue={defaultValue}
       />
