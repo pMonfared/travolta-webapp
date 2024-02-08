@@ -8,6 +8,7 @@ export interface HotelItemProps {
     country: string;
     city: string;
     offers: [];
+    availablity: boolean;
     price: boolean;
   };
 }

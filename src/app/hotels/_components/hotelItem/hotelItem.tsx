@@ -29,8 +29,13 @@ export default function HotelItem({ hotel }: HotelItemProps) {
             </Typography>
           </CardContent>
           <CardActions>
-            <Button size="small">Share</Button>
-            <Button size="small">Learn More</Button>
+            <Button
+              size="small"
+              color={hotel.availablity ? 'primary' : 'success'}
+              // color={hotel.availablity ? colors.green : colors.grey[600]}
+            >
+              {hotel.availablity ? `Available` : `Unavailable`}{' '}
+            </Button>
           </CardActions>
         </div>
       </Stack>
