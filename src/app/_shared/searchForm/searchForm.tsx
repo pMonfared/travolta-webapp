@@ -1,14 +1,14 @@
 'use client';
 
-import SearchDestination from '../_shared/searchDestination';
+import SearchDestination from '../searchDestination/searchDestination';
 import { Button, Stack, colors } from '@mui/material';
 
-import DatePickerRange from '../../components/picker/datePickerRange';
-import GuestsAndRoomPicker from '../_shared/guestsAndRoomPicker';
+import DatePickerRange from '../../../components/picker/datePickerRange/datePickerRange';
+import GuestsAndRoomPicker from '../guestsAndRoomPicker/guestsAndRoomPicker';
 import { useForm } from 'react-hook-form';
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { IHotelsSearchQueryParams } from '../hotels/_api/interfaces/hotelsSearchQueryParams.interface';
+import { IHotelsSearchQueryParams } from '@/app/hotels/_api/hotels/interfaces/hotelsSearchQueryParams.interface';
 
 export default function SearchForm() {
   const router = useRouter();

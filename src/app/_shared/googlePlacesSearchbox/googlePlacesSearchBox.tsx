@@ -14,15 +14,7 @@ import {
 import '@reach/combobox/styles.css';
 import { ChangeEvent } from 'react';
 import { Libraries, useLoadScript } from '@react-google-maps/api';
-
-interface IGooglePlacesSearchBoxProps {
-  onSelectAddress: (
-    address: string,
-    latitude: number | null,
-    longitude: number | null
-  ) => void;
-  defaultValue: string;
-}
+import { IGooglePlacesSearchBoxProps } from './interfaces/googlePlacesSearchBoxProps.interfaces';
 
 const libraries: Libraries = ['places'];
 

@@ -2,18 +2,9 @@ import Paper from '@mui/material/Paper';
 import IconButton from '@mui/material/IconButton';
 import MapOutlinedIcon from '@mui/icons-material/MapOutlined';
 import SearchIcon from '@mui/icons-material/Search';
-import { GooglePlacesSearchBox } from './googlePlacesSearchBox';
+import { GooglePlacesSearchBox } from '../googlePlacesSearchbox/googlePlacesSearchBox';
 import { colors } from '@mui/material';
-
-interface ISearchDestinationProps {
-  onSelectDestination: (
-    address: string,
-    latitude: number | null,
-    longitude: number | null
-  ) => void;
-  required: boolean;
-  defaultValue: string;
-}
+import { ISearchDestinationProps } from './interfaces/searchDestinationProps.interface';
 
 export default function SearchDestination({
   onSelectDestination,

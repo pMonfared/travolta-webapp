@@ -12,15 +12,7 @@ import {
 import KeyboardArrowDownOutlinedIcon from '@mui/icons-material/KeyboardArrowDownOutlined';
 import GroupOutlinedIcon from '@mui/icons-material/GroupOutlined';
 import { useState } from 'react';
-
-interface IGuestsAndRoomPickerProps {
-  onSelectGuestsAndRoom: (
-    adultsCount: number,
-    childrenCount: number,
-    roomCount: number
-  ) => void;
-  required: boolean;
-}
+import { IGuestsAndRoomPickerProps } from './interfaces/guestsAndRoomPickerProps.interface';
 
 export default function GuestsAndRoomPicker({
   onSelectGuestsAndRoom,

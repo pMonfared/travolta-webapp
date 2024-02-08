@@ -4,12 +4,7 @@ import dayjs from 'dayjs';
 import { IconButton, InputBase, Paper, Stack, colors } from '@mui/material';
 import CalendarTodayOutlinedIcon from '@mui/icons-material/CalendarTodayOutlined';
 import 'react-datepicker/dist/react-datepicker.css';
-
-interface IDatePickerRangeProps {
-  onSelectDateRange: (startDate: Date, endDate: Date | null) => void;
-  requiredStartDate: boolean;
-  requiredEndDate: boolean;
-}
+import { IDatePickerRangeProps } from './interfaces/datePickerRangeProps.interface';
 
 export default function DatePickerRange({
   onSelectDateRange,
